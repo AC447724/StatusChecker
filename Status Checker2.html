@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VXP Networks Status</title>
+  <style>
+    /* Add your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+    main {
+      padding: 20px;
+    }
+    .script-status {
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VXP Networks Status</h1>
+  </header>
+  <main>
+    <h2>Check the status of VXP Networks</h2>
+    <button id="check-status-btn">Check VXP Status</button>
+    <button id="refresh-btn">Refresh</button>
+    <div class="script-status">
+      <p id="script-status-message">Loading...</p>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 VXP Networks Status</p>
+  </footer>
+
+  <script>
+    // Add your JavaScript code here
+    function checkScriptStatus() {
+      // Make a request to your script and update the status message
+      fetch('/your-script-endpoint')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('script-status-message').textContent = data.status;
+        })
+        .catch(error => {
+          document.getElementById('script-status-message').textContent = 'Error checking VXP status';
+        });
+    }
+
+    // Add event listener to the Check Status button
+    document.getElementById('check-status-btn').addEventListener('click', checkScriptStatus);
+
+    // Add event listener to the Refresh button
+    document.getElementById('refresh-btn').addEventListener('click', () => {
+      location.reload();
+    });
+  </script>
+</body>
+</html>
